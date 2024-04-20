@@ -1,0 +1,19 @@
+<div class="card">
+    
+    <div class="card-header">
+      <p>{{ prediction.title }}</p>
+    </div>
+    
+    <div class="card-body">
+      <p><span>File name&nbsp;:</span>&nbsp;{{ prediction.file_name }}</p>
+      <p><span>Attribute&nbsp;:</span>&nbsp;{{ prediction.attribute }}</p>
+      <p><span>Frequency&nbsp;:</span>&nbsp;{{ prediction.frequency }}</p>
+      <p><span>Period&nbsp;:</span>&nbsp;{{ prediction.period }}</p>
+    </div>
+
+    <div class="card-footer">
+      <button mat-raised-button style="background-color: #263179;color:white;" (click)="viewPrediction()">View Details</button>
+      <button mat-raised-button color="warn" (click)="deletePrediction()">Delete</button>
+    </div>
+
+  </div>

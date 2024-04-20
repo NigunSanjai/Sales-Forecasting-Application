@@ -1,0 +1,120 @@
+<div class="header" #header>
+  <div class="logo">
+      <span style="color:white" class="material-symbols-outlined">
+          monitoring
+      </span>
+      <p>ForecastPro</p>
+  </div>
+  
+  <div class="nav-bar">
+    
+    <div mat-button [matMenuTriggerFor]="menu" class="name">
+      <img src="../../assets/user.png">
+      <p>{{user_name}}</p>
+      <span class="material-symbols-outlined" style="color:black">
+        arrow_drop_down
+      </span>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openFiles()">My Files</button>
+      <button mat-menu-item routerLink='/predictions'>My Predictions</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+      
+  </div>
+</div>
+
+<div class="loading-page" id="loading-page">
+  <div id="rocket" style="background-color:#263179">
+
+  </div>
+  <h3>Processing your Data...</h3>
+</div>
+  
+
+  <div class="main">
+  
+    <div class="page">
+      <div class="left-sec">
+        <div class="lottie" id="lottie"></div>
+      </div>
+
+      <div class="right-sec">
+
+        <mat-card class="mat-card">
+
+          <mat-card-header>
+            <h2 class="title">Forecaster</h2>
+          </mat-card-header>
+          
+          <div class="file-sec">
+            <div class="file-name">
+              <p *ngIf="!selectedFile">No File Choosen...</p>
+              <p *ngIf="selectedFile">{{selectedFile.name}}</p>
+            </div>
+            <div class="file-inp">
+              <input class="inp" type="file" (change)="onFileSelected($event)">
+              <span class="material-symbols-outlined" style="color:white;font-weight:bold">
+                upload
+              </span>
+            </div>
+          </div>
+
+          <div class="attr-sel" style="margin-top: 30px;">
+            <p>Title</p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+              <input matInput [formControl]="titleControl">
+            </mat-form-field>
+          </div>
+          
+
+
+          <div class="freq-sel">
+            <div class="attr-sel">
+              <p>Frequency</p>
+              <mat-chip-listbox style="width:100px" #chipList [formControl]="formControl">
+                <mat-chip-option color="primary" selected>Daily</mat-chip-option>
+                <mat-chip-option color="accent">Weekly</mat-chip-option>
+                <mat-chip-option color="primary">Monthly</mat-chip-option>
+                <mat-chip-option color="accent">Yearly</mat-chip-option>
+              </mat-chip-listbox>
+            </div>
+
+            <div class="box">
+              <div class="attr-sel">
+                <p>Attribute</p>
+                <mat-form-field class="mat-form-field" appearance="fill">
+                  <mat-label>Attribute</mat-label>
+                  <mat-select class="mat-select" [formControl]="formControl" #productSelect>
+                    <mat-option *ngFor="let attribute of attributes" [value]="attribute.value">
+                      {{attribute.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="attr-sel" style="margin-top:10px">
+                <p>Period</p>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Period</mat-label>
+                  <input type="number" min="0" [defaultValue]="0" matInput [formControl]="periodControl">
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            
+
+          </div>
+          
+        <div class="btns">
+          <button mat-raised-button (click)="onUpload(productSelect.value)" style="background-color: #263179;color:white">Forecast</button>
+          <button mat-raised-button (click)="resetForm()" color="warn">Reset</button>
+        </div>
+        
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

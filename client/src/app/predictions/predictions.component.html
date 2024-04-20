@@ -1,0 +1,47 @@
+<div class="header" #header>
+    <div class="logo">
+        <span style="color:white" class="material-symbols-outlined">
+            monitoring
+        </span>
+        <p>ForecastPro</p>
+    </div>
+    
+    <div class="nav-bar">
+
+        <button mat-raised-button color="accent" routerLink="/home" class="btn">Dashboard</button>
+      
+      <div mat-button [matMenuTriggerFor]="menu" class="name">
+        <img src="../../assets/user.png">
+        <p>{{user_name}}</p>
+        <span class="material-symbols-outlined" style="color:black">
+          arrow_drop_down
+        </span>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>My Files</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+        
+    </div>
+  </div>
+
+
+  <div class="page">
+    <h2 class="title">My Predictions</h2>
+
+    <div *ngIf="!show_table" class="no-table">
+        <img src="../../assets/no_files.png" style="height:60%">
+        <h1>No Predictions Found!!</h1>
+    </div>
+
+    <div class="grid" *ngIf="show_table">
+      <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10px">
+        <mat-grid-tile *ngFor="let prediction of predictions" style="padding: 10px;">
+          <app-prediction-card class="card" [prediction]="prediction" (predictionDeleted)="onPredictionDeleted($event)"></app-prediction-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    
+      
+  
+  </div>

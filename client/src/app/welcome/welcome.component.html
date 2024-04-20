@@ -1,0 +1,181 @@
+<section class="page" id="hero">  
+    <div class="header" #header>
+        <div class="logo">
+            <span style="color:white" class="material-symbols-outlined">
+                monitoring
+            </span>
+            <p>ForecastPro</p>
+        </div>
+        
+        <div class="nav-bar">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+            <button mat-raised-button routerLink='register'>Register</button>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="info">
+            <h1>ForecastPro</h1>
+            <p style="color:white">
+                Revolutionize your sales forecasting with our powerful and intuitive Sales Forecasting Application. </p>
+            <p style="color:white">
+                Upload your data and get accurate predictions in seconds!
+            </p>
+
+            <div class="button" routerLink="login">
+                <p>Get Started</p>
+                <span class="material-symbols-outlined">
+                    navigate_next
+                </span>
+            </div>
+        </div>
+
+        <div class="img">
+            <div class="lottie" id="lottie"></div>
+        </div>
+        
+    </div>
+</section>
+
+
+<button id="scroll-to-top-btn">
+    <a href="#hero" style="text-decoration:none;color:white">
+        <span class="material-symbols-outlined">
+            keyboard_arrow_up
+        </span>
+    </a>
+</button>
+
+<section class="about" id="about">
+    <div class="nav-bar-bg"></div>
+
+    <div class="about-grid">
+        <div class="about-sec">
+            <div class="tech" id="tech"></div>
+        </div>
+        <div class="about-sec">
+            <h1>About</h1>
+            <p>
+                Welcome to our powerful and intuitive Sales Forecasting System. With our system, you can easily upload your historical sales data and get accurate predictions in seconds! 
+                <br><br>
+                Our advanced algorithms use your data to identify patterns and trends, giving you a clear picture of where your sales are headed.
+                <br><br>
+                But that's not all -- our system also includes powerful analytics tools to help you uncover insights and make data-driven decisions. 
+                <br><br>
+            </p>
+            <p style="font-weight: bold;text-align:center;font-size:17px">"So why wait? Get Started and analyze like a pro!"</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="features" id="features">
+    
+    <div class="nav-bar-bg">
+
+    </div>
+    
+    <div class="heading">
+        <div class="lottie-1" id="lottie-1"></div>
+        <p>What it Does?</p>
+    </div>
+
+    <div class="grid">
+
+        <mat-card class="box">
+            <img src="../../assets/upload.png" class="card-img">
+
+            <div class="card-info">
+                <h2>Upload</h2>
+                <p>Easily upload your CSV data with just a few clicks</p>
+                <p>Accepts all kinds of Datasets</p>
+                <p>Streamlined upload process to save you time.</p>
+            </div>
+        </mat-card>
+
+        <mat-card class="box">
+
+            <img src="../../assets/visualize.png" class="card-img">
+
+            <div class="card-info">
+                <h2>Visualize</h2>
+                <p>Visualizations help you better understand your data.</p>
+                <p>Charts and graphs bring your data to life.</p>
+                <p>Create and Download Visualiztions</p>
+            </div>
+
+        </mat-card>
+
+        <mat-card class="box">
+            <img src="../../assets/analyze.png" class="card-img">
+            <div class="card-info">
+                <h2>Analyze</h2>
+                <p>Powerful analytics tools to help you uncover insights.</p>
+                <p>Advanced algorithms to identify patterns and trends.</p>
+                <p>Real-time analysis for up-to-the-minute insights.</p>
+            </div>
+            
+        </mat-card>
+    </div>
+
+</section>
+
+<section class="contact" id="contact">
+    
+    <div class="nav-bar-bg">
+
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-img">
+            <div id="message"></div>
+        </div>
+
+        <div class="contact-form">
+
+            <h1>Contact Us</h1>
+
+            <form class="form" [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message Type</mat-label>
+                    <mat-select class="mat-select" formControlName="messageType" #productSelect>
+                        <mat-option *ngFor="let attribute of attributes" [value]="attribute.value">
+                            {{attribute.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput formControlName="message"></textarea>
+                </mat-form-field>
+            
+                <button mat-raised-button id="register" type="submit">Message</button>
+            
+            </form>
+        </div>
+
+
+    </div>
+
+    
+
+</section>

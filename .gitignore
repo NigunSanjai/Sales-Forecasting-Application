@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Compiled output
+dist/
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+*.log
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+*.pyc

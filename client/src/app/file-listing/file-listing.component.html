@@ -1,0 +1,96 @@
+<div class="header" #header>
+  <div class="logo">
+      <span style="color:white" class="material-symbols-outlined">
+          monitoring
+      </span>
+      <p>ForecastPro</p>
+  </div>
+  
+  <div class="nav-bar">
+    
+    <button mat-raised-button color="accent" routerLink="/home" class="btn">Dashboard</button>
+
+    <div mat-button [matMenuTriggerFor]="menu" class="name">
+      <img src="../../assets/user.png">
+      <p>{{user_id}}</p>
+      <span class="material-symbols-outlined" style="color:black">
+        arrow_drop_down
+      </span>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+      
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="title">My Files</h2>
+
+  <div *ngIf="!show_table" class="no-table">
+    <img src="../../assets/no_files.png" style="height:60%">
+    <h1>No Files Found!!</h1>
+  </div>
+
+  <div *ngIf="show_table" class="mat-elevation-z8">
+    <table mat-table matSort [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="num">
+        <th mat-header-cell *matHeaderCellDef style="background-color: #35363a;color:white"> <strong>S.No.</strong></th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- File Column -->
+      <ng-container matColumnDef="file">
+        
+        <th mat-header-cell *matHeaderCellDef style="background-color: #35363a;color:white"> 
+          <strong>File</strong>
+        </th>
+        
+        <td mat-cell *matCellDef="let element"> 
+          {{element.file_name}}
+        </td>
+
+      </ng-container>
+  
+      <!-- Forecast Column -->
+      <ng-container matColumnDef="forecast">
+        <th mat-header-cell *matHeaderCellDef style="background-color: #35363a;color:white"><strong>Forecast</strong></th>
+        <td mat-cell *matCellDef="let element">
+            <button  mat-raised-button style="background-color: #263179;color:white" (click)="openForecastDialog(element.file_name)" class="act-btn">Forecast</button>
+            <button mat-mini-fab style="background-color: #263179;" (click)="openForecastDialog(element.file_name)" class="act-btn-fab">
+              <span class="material-symbols-outlined">
+                insights
+              </span>
+            </button>
+            
+        </td>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef style="background-color: #35363a;color:white"><strong>Delete</strong></th>
+        <td mat-cell *matCellDef="let element">
+            <button  mat-raised-button color="warn" (click)="openDeleteDialog(element.file_name)" class="act-btn">Delete</button>
+            <button mat-mini-fab color="warn" (click)="openDeleteDialog(element.file_name)" class="act-btn-fab">
+              <span class="material-symbols-outlined">
+                delete
+              </span>
+            </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5,10,20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+  </div>
+  
+</div>

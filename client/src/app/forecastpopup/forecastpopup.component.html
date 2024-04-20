@@ -1,0 +1,58 @@
+<div class="loading-page" id="loading-page">
+  <div id="rocket">
+  </div>
+  <h3>Processing your Data...</h3>
+</div>
+
+<div class="main">
+
+  
+  <div class="flex">
+
+    <div class="attr-sel">
+      <p>Title</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input matInput [formControl]="titleControl">
+      </mat-form-field>
+    </div>
+  
+    <div class="attr-sel">
+      <p>Product</p>
+      <mat-form-field class="mat-form-field" appearance="fill">
+        <mat-label>Product</mat-label>
+        <mat-select class="mat-select" [formControl]="formControl" #productSelect>
+          <mat-option *ngFor="let attribute of attributes" [value]="attribute.value">
+            {{attribute.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+  
+
+  <div class="freq-sel">
+      <p>Frequency</p>
+      <mat-chip-listbox  #chipList [formControl]="formControl">
+        <mat-chip-option color="primary" selected>Daily</mat-chip-option>
+        <mat-chip-option color="accent">Weekly</mat-chip-option>
+        <mat-chip-option color="primary">Monthly</mat-chip-option>
+        <mat-chip-option color="accent">Yearly</mat-chip-option>
+      </mat-chip-listbox>
+  </div>
+
+  <div class="attr-sel" style="margin-top:10px">
+    <p>Period</p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Period</mat-label>
+      <input type="number" min="0" [defaultValue]="0" matInput [formControl]="periodControl">
+    </mat-form-field>
+  </div>
+
+  <div class="btns">
+    <button class="up-btn" mat-raised-button style="background-color: #263179;color:white" (click)="onUpload(productSelect.value)">Forecast</button>
+    <button class="reset" mat-raised-button color="warn" (click)="resetForm()">Reset</button>
+  </div>
+
+</div>

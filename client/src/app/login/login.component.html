@@ -1,0 +1,66 @@
+<div class="header" #header>
+  <div class="logo">
+      <span style="color:white" class="material-symbols-outlined">
+          monitoring
+      </span>
+      <p>ForecastPro</p>
+  </div>
+  
+  <div class="nav-bar">
+      <button mat-raised-button routerLink=''>HOME</button>
+  </div>
+</div>
+
+<div *ngIf="loading_flag" class="loading-page">
+  <div class = "centered">
+    <div class = "blob-1"></div>
+    <div class = "blob-2"></div>
+  </div>
+  <h3>Logging you in...</h3>
+</div>
+
+<div class="page">
+  
+  <div class="grid">
+    <div class="left-sec">
+      <img class="img" src="../../assets/login.png">
+    </div>
+
+    <div class="right-sec">
+      <mat-card class = "mat-card">
+        <mat-card-header>
+            <h2 class="title">Login</h2>
+        </mat-card-header>
+        
+        <mat-card-content class="mat-card-content">
+          <form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
+            <mat-form-field class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName="username">
+            </mat-form-field>
+          
+            <br>
+          
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password">
+            </mat-form-field>
+            
+          
+            <br>
+            <div class="btns">
+              <button mat-raised-button id="login">Login</button>
+              <button mat-raised-button [routerLink]="['/register']" id="register">New User?</button>
+            </div>
+          
+          </form>
+          
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+
+  
+

@@ -1,0 +1,112 @@
+<div class="header" #header>
+  <div class="logo">
+      <span style="color:white" class="material-symbols-outlined">
+          monitoring
+      </span>
+      <p>ForecastPro</p>
+  </div>
+  
+  <div class="nav-bar">
+    
+    <div mat-button [matMenuTriggerFor]="menu" class="name">
+      <img src="../../assets/user.png">
+      <p>{{user_name}}</p>
+      <span class="material-symbols-outlined" style="color:black">
+        arrow_drop_down
+      </span>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+      
+  </div>
+</div>
+
+
+
+<div class="main">
+  
+  <div class="result">
+    <p>Forecast</p>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart" [chart]="lineChart"> </div>
+    <div class="chart" [chart]="barChart"> </div>
+  </div>
+
+  <div class="btm-box">
+
+    <div class="metric-box">
+      <p class="title">Metrics</p>
+      <div class="row">
+        <div class="metric">
+          <p class="metric-value">
+            {{rmse}}
+          </p>
+          <p class="metric-name">
+            RMSE
+          </p>
+        </div>
+    
+        <div class="metric">
+          <p class="metric-value">
+            {{mse}}
+          </p>
+          <p class="metric-name">
+            MSE
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="metric">
+          <p class="metric-value">
+            {{mae}}
+          </p>
+          <p class="metric-name">
+            MAE
+          </p>
+        </div>
+    
+        <div class="metric">
+          <p class="metric-value">
+            {{mape}}
+          </p>
+          <p class="metric-name">
+            MAPE
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quantity-box">
+      <p class="title">Quantity</p>
+      <div class="attr-box">
+        <p class="attr">{{quantity}}k</p>
+        <p class="attr-name">{{attribute}}</p>
+      </div>
+      
+    </div>
+
+    <div class="quantity-box">
+      <p class="title">Revenue</p>
+      <div class="attr-box">
+        <p class="attr">{{revenue}}M</p>
+        <p class="attr-name">{{attribute}}</p>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <div class="btns">
+    <button mat-raised-button style="background-color: #263179;color:white" (click)="download_csv()">Download CSV</button>
+    <button mat-raised-button color="warn" (click)="goBack()">Back</button>
+  </div>
+  
+</div>
+
+
+
